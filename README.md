@@ -8,4 +8,4 @@ Este repositorio se centra en recopilar problemas y desafíos que se han present
 
 En este repositorio, encontrarás una variedad de problemas y desafíos resueltos utilizando Python. Los trabajos didácticos abarcan diversas áreas de estudio, como matemáticas, estadísticas, ciencias de la computación y más. Cada problema está acompañado de una solución clara y detallada, que incluye explicaciones paso a paso y ejemplos de código.
 
-Autor: Saulito.
+Autor: Saulito
