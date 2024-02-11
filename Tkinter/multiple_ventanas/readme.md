@@ -1,4 +1,4 @@
-**Introducción:**
+# **Introducción:**
 
 En este código, exploramos cómo trabajar con la biblioteca Tkinter en Python para crear interfaces gráficas de usuario (GUI). Tkinter es una herramienta poderosa y fácil de usar que nos permite crear ventanas, botones, etiquetas y otros elementos de interfaz para nuestras aplicaciones.
 
