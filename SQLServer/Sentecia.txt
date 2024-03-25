@@ -1,0 +1,56 @@
+USE [Historial Notas];
+GO
+
+CREATE TABLE notas (
+    codmateria CHAR(6) PRIMARY KEY,
+    materia VARCHAR(50)
+);
+GO
+
+CREATE SEQUENCE SEQ_CODEMATERIA
+    AS INT
+    START WITH 1
+    INCREMENT BY 1
+    MINVALUE 1
+    NO CYCLE;
+
+CREATE TRIGGER TRG_T_codmateria_INSERT
+ON notas
+INSTEAD OF INSERT
+AS
+BEGIN
+    DECLARE @NewCode INT;
+    DECLARE @FormattedCode VARCHAR(6);
+
+    -- Obtener el siguiente valor de la secuencia
+    SELECT @NewCode = NEXT VALUE FOR SEQ_CODEMATERIA;
+
+    -- Formatear el nuevo código en el formato 'MAT001', 'MAT002', etc.
+    SET @FormattedCode = 'MAT' + RIGHT('000' + CAST(@NewCode AS VARCHAR(3)), 3);
+
+    -- Insertar los registros con los nuevos códigos asignados
+    INSERT INTO notas (codmateria, materia)
+    SELECT @FormattedCode, materia
+    FROM inserted;
+END;
+GO
+
+INSERT INTO notas (materia) VALUES ('Matemáticas');
+INSERT INTO notas (materia) values ('Razonamiento Verbal')
+INSERT INTO notas (materia) VALUES ('Fisica');
+INSERT INTO notas (materia) values ('Razonamiento Matematico');
+INSERT INTO notas (materia) VALUES ('Quimica');
+INSERT INTO notas (materia) values ('Geometria');
+insert into notas (materia) values ('Literatura');
+
+
+INSERT INTO notas (materia) values ('Razonamiento X');
+INSERT INTO notas (materia) VALUES ('Quimica 2');
+INSERT INTO notas (materia) values ('Geometria Analitica');
+insert into notas (materia) values ('Literatura Romana')
+select  * from notas
+delete from notas where codmateria = 'MAT004'
+
+drop table notas
+drop SEQUENCE SEQ_CODEMATERIA
+drop TRIGGER TRG_T_codmateria_INSERT
