@@ -5,9 +5,6 @@ import time
 import os
 import warnings
 warnings.filterwarnings('ignore')
-import requests
-import pandas as pd
-import os
 
 # Obtener la información de la API
 def get_exchange_rate():
